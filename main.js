@@ -1,0 +1,54 @@
+function getComputerChoice() {
+  let computerChoice = Math.floor(Math.random() * 3);
+  if (computerChoice == 0) {
+    return "rock";
+  }
+
+  if (computerChoice == 1) {
+    return "paper";
+  }
+
+  if (computerChoice == 2) {
+    return "scissors";
+  }
+}
+
+function getHumanChoice() {
+  let choice = prompt("Rock, Paper, or Scissors?");
+  return choice.toLowerCase();
+}
+
+function rockPaperScissors(humanChoice, computerChoice) {
+  if (humanChoice === computerChoice) {
+    return "Tie!";
+  }
+
+  if (humanChoice === "rock" && computerChoice === "paper") {
+    return "Computer Win!";
+  }
+
+  if (humanChoice === "rock" && computerChoice === "scissors") {
+    return "You Win!";
+  }
+
+  if (humanChoice === "paper" && computerChoice === "rock") {
+    return "You Win!";
+  }
+
+  if (humanChoice === "paper" && computerChoice === "scissors") {
+    return "Computer Win!";
+  }
+
+  if (humanChoice === "scissors" && computerChoice === "paper") {
+    return "You Win!";
+  }
+
+  if (humanChoice === "scissors" && computerChoice === "rock") {
+    return "Computer Win!";
+  }
+}
+
+// const computerChoice = getComputerChoice();
+// const humanChoice = getHumanChoice();
+
+// const result = rockPaperScissors(humanChoice, computerChoice);
