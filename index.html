@@ -10,9 +10,16 @@
     <div class="container">
       <h1>Rock Paper Scissors</h1>
       <div class="score-board">
-        <div id="user-label" class="badge">User</div>
-        <div id="computer-label" class="badge">Comp</div>
-        <span id="user-score">0</span>:<span id="computer-score">0</span>
+        <div class="badge-container">
+          <div id="user-label" class="badge">
+            User
+            <span id="user-score" class="user-score">0</span>
+          </div>
+          <div id="computer-label" class="badge">
+            Computer
+            <span id="computer-score" class="computer-score">0</span>
+          </div>
+        </div>
       </div>
 
       <div class="result">
@@ -24,6 +31,7 @@
         <button class="choice" id="p">✋</button>
         <button class="choice" id="s">✌️</button>
       </div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
