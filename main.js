@@ -15,6 +15,7 @@ function getComputerChoice() {
 
 let userScore = 0;
 let computerScore = 0;
+let gameOver = false;
 
 const userScoreDisplay = document.querySelector("#user-score");
 const computerScoreDisplay = document.querySelector("#computer-score");
@@ -25,22 +26,34 @@ document.querySelectorAll(".choice").forEach((button) => {
     const humanChoice = button.id;
     const computerChoice = getComputerChoice();
     const result = rockPaperScissors(humanChoice, computerChoice);
+    resultDisplay.textContent = result;
 
-    if (result === "You Win!") {
-      userScore++;
+    if (gameOver === false) {
+      if (result === "You Scored!") {
+        userScore++;
+        userScoreDisplay.textContent = userScore;
+      }
+
+      if (result === "Computer Scored!") {
+        computerScore++;
+        computerScoreDisplay.textContent = computerScore;
+      }
+
+      if (userScore === 5) {
+        resultDisplay.textContent = "User Win!";
+        gameOver = true;
+      }
+      if (computerScore === 5) {
+        resultDisplay.textContent = "Computer Win!";
+        gameOver = true;
+      }
+    }
+    if (gameOver === true) {
+      userScore = 0;
+      computerScore = 0;
       userScoreDisplay.textContent = userScore;
-    }
-
-    if (result === "Computer Win!") {
-      computerScore++;
       computerScoreDisplay.textContent = computerScore;
-    }
-
-    if (userScore === 5) {
-      resultDisplay.textContent = "User Win!";
-    }
-    if (computerScore === 5) {
-      resultDisplay.textContent = "Computer Win!";
+      gameOver = false;
     }
   });
 });
@@ -54,26 +67,26 @@ function rockPaperScissors(humanChoice, computerChoice) {
   }
 
   if (humanChoice === "rock" && computerChoice === "paper") {
-    return "Computer Win!";
+    return "Computer Scored!";
   }
 
   if (humanChoice === "rock" && computerChoice === "scissors") {
-    return "You Win!";
+    return "You Scored!";
   }
 
   if (humanChoice === "paper" && computerChoice === "rock") {
-    return "You Win!";
+    return "You Scored!";
   }
 
   if (humanChoice === "paper" && computerChoice === "scissors") {
-    return "Computer Win!";
+    return "Computer Scored!";
   }
 
   if (humanChoice === "scissors" && computerChoice === "paper") {
-    return "You Win!";
+    return "You Scored!";
   }
 
   if (humanChoice === "scissors" && computerChoice === "rock") {
-    return "Computer Win!";
+    return "Computer Scored!";
   }
 }
