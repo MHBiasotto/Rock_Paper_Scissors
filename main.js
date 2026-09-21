@@ -13,10 +13,40 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  let choice = prompt("Rock, Paper, or Scissors?");
-  return choice.toLowerCase();
-}
+let userScore = 0;
+let computerScore = 0;
+
+const userScoreDisplay = document.querySelector("#user-score");
+const computerScoreDisplay = document.querySelector("#computer-score");
+const resultDisplay = document.querySelector(".result p");
+
+document.querySelectorAll(".choice").forEach((button) => {
+  button.addEventListener("click", () => {
+    const humanChoice = button.id;
+    const computerChoice = getComputerChoice();
+    const result = rockPaperScissors(humanChoice, computerChoice);
+
+    if (result === "You Win!") {
+      userScore++;
+      userScoreDisplay.textContent = userScore;
+    }
+
+    if (result === "Computer Win!") {
+      computerScore++;
+      computerScoreDisplay.textContent = computerScore;
+    }
+
+    if (userScore === 5) {
+      resultDisplay.textContent = "User Win!";
+    }
+    if (computerScore === 5) {
+      resultDisplay.textContent = "Computer Win!";
+    }
+  });
+});
+
+userScoreDisplay.textContent = userScore;
+computerScoreDisplay.textContent = computerScore;
 
 function rockPaperScissors(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
@@ -47,8 +77,3 @@ function rockPaperScissors(humanChoice, computerChoice) {
     return "Computer Win!";
   }
 }
-
-// const computerChoice = getComputerChoice();
-// const humanChoice = getHumanChoice();
-
-// const result = rockPaperScissors(humanChoice, computerChoice);
